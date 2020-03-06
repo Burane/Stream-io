@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>stream.burane</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../lib/bootstrap/bootstrap.min.css" />
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+        <div class="container">
+            <div class="row">
+                <a class="navbar-brand" id="logo">Stream io</a>
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbardrop" href="#" data-toggle="dropdown">Select
+                            source</a>
+                        <div class="dropdown-menu" id="dropdown-menu">
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="row">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <!-- {{!-- insert hear maybe a futur pause button --}} -->
+                    </li>
+                </ul>
+            </div>
+
+            <div class="row">
+                <ul class="navbar-nav">
+                    <div class="btn-toolbar">
+                        <li class="nav-item">
+                            <button class="btn btn-success" id="start">Start</button>
+                            <button class="btn btn-danger" id="stop">Stop</button>
+                        </li>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="embed-responsive embed-responsive-16by9 video_container">
+        <video></video>
+    </div>
+
+    <script src="../js/socket.js"></script>
+    <script src="../js/screenRecorder.js"></script>
+    <script>
+        window.jQuery = window.$ = require('jquery')
+    </script>
+    <script src="../lib/jquery/jquery-3.4.1.min.js"></script>
+    <script src="../lib/bootstrap/bootstrap.min.js"></script>
+    <script src="../lib/socket.io/socket.io.js"></script>
+    <script src="../lib/socket.io/socket.io-stream.js"></script>
+
+</body>
+
+</html>

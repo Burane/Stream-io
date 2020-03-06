@@ -3,29 +3,13 @@ const {
     BrowserWindow,
     dialog
 } = require('electron');
-const config = require("../config.json");
 
 let mainWindow;
 
 global.__basedir = __dirname
 
-app.on('ready', init);
+app.on('ready', setupElectron);
 
-function init() {
-    require('./express')() // le express.js que l'on a creer
-        .then(setupElectron)
-        .catch(err => {
-            console.error(err);
-            if (err.info)
-                dialog.showMessageBoxSync({
-                    type: "error",
-                    title: "Error",
-                    message: "The application is already running on your computer"
-                });
-
-            app.quit();
-        });
-}
 
 function setupElectron() {
     mainWindow = new BrowserWindow({
@@ -37,7 +21,8 @@ function setupElectron() {
         }
     });
 
-    mainWindow.loadURL('http://localhost:' + config.port + '/');
+
+    mainWindow.loadURL(__basedir+'/views/main.html');
 
     mainWindow.once('ready-to-show', () => {
         mainWindow.show();
