@@ -1,19 +1,19 @@
-const ipAddress = 'http://burane.fr:3100/'
-const socket = io(ipAddress)
+const ipAddress = 'localhost:3105'
 
-document.getElementById('sendMsg').onclick = sendMsg
+const io = require('socket.io-client')
+const stream = require('socket.io-stream')
 
-socket.on('message', (msg) => createMsg('left', msg.pseudo, msg.content))
 
-function sendMsg() {
+const socket = io.connect(ipAddress);
+const stream = ss.createStream();
 
-    let msg = document.getElementById('input-box').value
-    console.log(msg)
+function startStreaming(mediarecorder) {
+    console.log('in function start streaming')
+    let streamVideo = mediarecorder.stream
+    stream(socket).emit('test', stream, {name: "test"});
+    streamVideo.pipe(stream);
+}
 
-    socket.emit('message', {
-        pseudo: 'Me',
-        content: msg
-    })
+function stopStreaming() {
 
-    createMsg('right', 'Me', msg)
 }

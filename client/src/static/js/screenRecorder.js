@@ -3,10 +3,12 @@ document.addEventListener("DOMContentLoaded", init);
 function init() {
     getVideoSources()
 }
-setInterval(init,1000)
+setInterval(init, 1000)
 
 
-const {desktopCapturer} = require('electron');
+const {
+    desktopCapturer
+} = require('electron');
 
 
 
@@ -53,14 +55,14 @@ async function getVideoSources() {
 
 function clearChild() {
     let menu = document.getElementById('dropdown-menu')
-        while(menu.firstChild){
-            menu.removeChild(menu.lastChild)
-        }
+    while (menu.firstChild) {
+        menu.removeChild(menu.lastChild)
     }
+}
 
 function createChildSelect(source) {
     let menu = document.getElementById('dropdown-menu')
-   // menu.childNodes.
+    // menu.childNodes.
     let item = document.createElement('a')
     item.classList.add('dropdown-item')
     item.href = '#'
@@ -90,25 +92,21 @@ async function selectSource(source) {
     videoElement.srcObject = stream;
     videoElement.play();
 
-    const options = {
+    startStreaming(stream)
+   /* const options = {
         mimeType: 'video/webm; codecs=vp9'
     };
     mediaRecorder = new MediaRecorder(stream, options);
-   // todo
-    //mediaRecorder.ondataavailable = handleDataAvailable;
-    //mediaRecorder.onstop = handleStop;
+    // todo
+    console.log("mediaRecorder")
+    mediaRecorder.ondataavailable = (mediaRecorder) => startStreaming(mediaRecorder);
+    //mediaRecorder.onstop = stopStreaming;
+*/
+
 
 }
 // todo pause and play
-document.getElementById('logo').onclick = () => {
-    console.log("test")
-    mediaRecorder.pause()
-}
-
-$(document).ready(function() {
-    var icon = $('.play');
-    icon.click(function() {
-       icon.toggleClass('active');
-       return false;
-    });
-  });
+// document.getElementById('logo').onclick = () => {
+//     console.log("test")
+//     mediaRecorder.pause()
+// }
