@@ -1,4 +1,9 @@
-document.addEventListener("DOMContentLoaded", getVideoSources);
+document.addEventListener("DOMContentLoaded", init);
+
+function init() {
+    getVideoSources()
+}
+setInterval(init,1000)
 
 
 const {desktopCapturer} = require('electron');
@@ -23,6 +28,7 @@ const startBtn = document.getElementById('startBtn');
 
 const stopBtn = document.getElementById('stopBtn');
 
+
 // todo
 // stopBtn.onclick = () => {
 //     mediaRecorder.stop();
@@ -40,12 +46,21 @@ async function getVideoSources() {
         types: ['window', 'screen']
     });
 
+    clearChild()
     inputSources.forEach(source => createChildSelect(source))
 
 }
 
+function clearChild() {
+    let menu = document.getElementById('dropdown-menu')
+        while(menu.firstChild){
+            menu.removeChild(menu.lastChild)
+        }
+    }
+
 function createChildSelect(source) {
     let menu = document.getElementById('dropdown-menu')
+   // menu.childNodes.
     let item = document.createElement('a')
     item.classList.add('dropdown-item')
     item.href = '#'
@@ -79,7 +94,7 @@ async function selectSource(source) {
         mimeType: 'video/webm; codecs=vp9'
     };
     mediaRecorder = new MediaRecorder(stream, options);
-    todo
+   // todo
     //mediaRecorder.ondataavailable = handleDataAvailable;
     //mediaRecorder.onstop = handleStop;
 
@@ -89,3 +104,11 @@ document.getElementById('logo').onclick = () => {
     console.log("test")
     mediaRecorder.pause()
 }
+
+$(document).ready(function() {
+    var icon = $('.play');
+    icon.click(function() {
+       icon.toggleClass('active');
+       return false;
+    });
+  });
